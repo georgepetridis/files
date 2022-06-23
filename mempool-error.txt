@@ -1,0 +1,50 @@
+~/mempool/docker$ docker-compose up
+[+] Running 3/3
+ ⠿ Container docker-api-1  Recreated                                                                                                                                                    0.1s
+ ⠿ Container docker-web-1  Created                                                                                                                                                      0.0s
+ ⠿ Container docker-db-1   Recreated                                                                                                                                                    0.1s
+Attaching to docker-api-1, docker-db-1, docker-web-1
+docker-db-1   | 2022-06-23 13:14:47+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 1:10.5.8+maria~focal started.
+docker-api-1  | wait-for-it.sh: waiting 720 seconds for db:3306
+docker-db-1   | 2022-06-23 13:14:48 0 [Note] mysqld (mysqld 10.5.8-MariaDB-1:10.5.8+maria~focal) starting as process 1 ...
+docker-db-1   | 2022-06-23 13:14:49 0 [Note] InnoDB: Using Linux native AIO
+docker-db-1   | 2022-06-23 13:14:49 0 [Note] InnoDB: Uses event mutexes
+docker-db-1   | 2022-06-23 13:14:49 0 [Note] InnoDB: Compressed tables use zlib 1.2.11
+docker-db-1   | 2022-06-23 13:14:49 0 [Note] InnoDB: Number of pools: 1
+docker-db-1   | 2022-06-23 13:14:49 0 [Note] InnoDB: Using crc32 + pclmulqdq instructions
+docker-db-1   | 2022-06-23 13:14:49 0 [Note] mysqld: O_TMPFILE is not supported on /tmp (disabling future attempts)
+docker-db-1   | 2022-06-23 13:14:49 0 [Note] InnoDB: Initializing buffer pool, total size = 134217728, chunk size = 134217728
+docker-db-1   | 2022-06-23 13:14:49 0 [Note] InnoDB: Completed initialization of buffer pool
+docker-db-1   | 2022-06-23 13:14:49 0 [Note] InnoDB: If the mysqld execution user is authorized, page cleaner thread priority can be changed. See the man page of setpriority().
+docker-db-1   | 2022-06-23 13:14:49 0 [Note] InnoDB: 128 rollback segments are active.
+docker-db-1   | 2022-06-23 13:14:49 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+docker-db-1   | 2022-06-23 13:14:49 0 [Note] InnoDB: Setting file './ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+docker-db-1   | 2022-06-23 13:14:49 0 [Note] InnoDB: File './ibtmp1' size is now 12 MB.
+docker-db-1   | 2022-06-23 13:14:49 0 [Note] InnoDB: 10.5.8 started; log sequence number 493148; transaction id 708
+docker-db-1   | 2022-06-23 13:14:49 0 [Note] Plugin 'FEEDBACK' is disabled.
+docker-db-1   | 2022-06-23 13:14:49 0 [Note] InnoDB: Loading buffer pool(s) from /var/lib/mysql/ib_buffer_pool
+docker-db-1   | 2022-06-23 13:14:49 0 [Note] Server socket created on IP: '::'.
+docker-db-1   | 2022-06-23 13:14:49 0 [Note] InnoDB: Buffer pool(s) load completed at 220623 13:14:49
+docker-db-1   | 2022-06-23 13:14:49 0 [Warning] 'proxies_priv' entry '@% root@f8b7b8c24b8b' ignored in --skip-name-resolve mode.
+docker-api-1  | wait-for-it.sh: db:3306 is available after 2 seconds
+docker-db-1   | 2022-06-23 13:14:50 0 [Note] Reading of all Master_info entries succeeded
+docker-db-1   | 2022-06-23 13:14:50 0 [Note] Added new Master_info '' to hash table
+docker-db-1   | 2022-06-23 13:14:50 0 [Note] mysqld: ready for connections.
+docker-db-1   | Version: '10.5.8-MariaDB-1:10.5.8+maria~focal'  socket: '/run/mysqld/mysqld.sock'  port: 3306  mariadb.org binary distribution
+docker-db-1   | 2022-06-23 13:14:50 3 [Warning] Aborted connection 3 to db: 'unconnected' user: 'unauthenticated' host: '172.16.57.3' (This connection closed normally without authentication)
+docker-db-1   | 2022-06-23 13:14:50 4 [Warning] Aborted connection 4 to db: 'unconnected' user: 'unauthenticated' host: '172.16.57.4' (This connection closed normally without authentication)
+docker-api-1  | git not found, cannot parse git hash
+docker-api-1  | Jun 23 13:14:51 [85] NOTICE: Starting Mempool Server... (?)
+docker-api-1  | Jun 23 13:14:51 [85] INFO: Database connection established.
+docker-api-1  | Jun 23 13:14:51 [85] INFO: Starting statistics service
+docker-api-1  | Jun 23 13:14:51 [85] INFO: Starting currency rates service
+docker-api-1  | Jun 23 13:14:51 [85] INFO: Currency rates service will be queried over clearnet using https://price.bisq.wiz.biz/getAllMarketPrices
+docker-api-1  | Jun 23 13:14:51 [85] NOTICE: Mempool Server is running on port 8999
+docker-api-1  | Jun 23 13:15:51 [85] INFO: Updating latest mining pools from Github
+docker-api-1  | Jun 23 13:15:51 [85] INFO: List of public pools will be queried over clearnet
+docker-api-1  | Jun 23 13:17:02 [85] ERR: Electrum error: {"errno":-110,"code":"ETIMEDOUT","syscall":"connect","address":"10.0.0.15","port":50002}
+docker-api-1  | Jun 23 13:17:02 [85] ERR: Error connecting to Electrum Server at 10.0.0.15:50002
+docker-api-1  | Jun 23 13:17:02 [85] INFO: Disconnected from Electrum Server at 10.0.0.15:50002
+docker-api-1  | Jun 23 13:18:56 [85] WARN: runMainLoop error: ETIMEDOUT. Retrying in 10 sec.
+docker-api-1  | Jun 23 13:19:21 [85] ERR: Electrum error: {"errno":-110,"code":"ETIMEDOUT","syscall":"connect","address":"10.0.0.15","port":50002}
+docker-api-1  | Jun 23 13:19:21 [85] ERR: Electrum error: {"errno":-110,"code":"ETIMEDOUT","syscall":"connect","address":"10.0.0.15","port":50002}
